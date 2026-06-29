@@ -7,15 +7,15 @@ El proyecto incluye implementaciones en **Python** y **Fortran**, además de una
 
 ## 📌 Objetivos del proyecto
 
-- Resolver la ecuación del calor en 2D con condiciones de contorno simples.
-- Comparar rendimiento entre Python y Fortran.
-- Generar gráficos de la evolución térmica y de los tiempos de ejecución.
+- Resolver la ecuación del calor en 2D con condiciones de contorno simples.  
+- Comparar rendimiento entre Python y Fortran.  
+- Generar gráficos de la evolución térmica y de los tiempos de ejecución.  
 - Documentar el proceso de forma clara y reproducible.
 
 ---
 
 ## 📁 Estructura del repositorio
-
+```bash
 heat2d-simulation/
 │
 ├── python/
@@ -30,7 +30,8 @@ heat2d-simulation/
 │   └── compare_times.png
 │
 └── README.md
-
+```
+Código
 
 ---
 
@@ -41,7 +42,7 @@ El método FTCS discretiza la ecuación del calor:
 
 
 \[
-\frac{\partial T}{\partial t} = \alpha \left( 
+\frac{\partial T}{\partial t} = \alpha \left(
 \frac{\partial^2 T}{\partial x^2} +
 \frac{\partial^2 T}{\partial y^2}
 \right)
@@ -65,42 +66,50 @@ T_{i,j+1}^n + T_{i,j-1}^n -
 
 donde:
 
-- \(\lambda = \alpha \frac{\Delta t}{\Delta x^2}\)
-- Condición de estabilidad: \(\lambda \le 0.25\)
+
+
+\[
+\lambda = \alpha \frac{\Delta t}{\Delta x^2}
+\]
+
+
+
+Condición de estabilidad: \(\lambda \le 0.25\)
 
 ---
 
 ## 🚀 Ejecución
 
 ### Python
-
 ```bash
 python python/heat2d_python.py
-
-
----
-
+```
 ### Fortran
+Compilar:
 
-Compilar: gfortran fortran/heat2d_fortran.f90 -o heat2d
-Ejecutar: ./heat2d
-
-Comparación de tiempos
+```bash
+gfortran fortran/heat2d_fortran.f90 -o heat2d
+```
+Ejecutar:
+```bash
+./heat2d
+```
+## Comparación de tiempos
 El script compare_times.py mide el tiempo de ejecución de ambos programas y genera un gráfico comparativo.
 
-Resultados
-Python: ~0.01176 s
+### Resultados
+#### Python: ~0.01176 s
 
-Fortran: ~0.00564 s
+#### Fortran: ~0.00564 s
 
 Fortran es aproximadamente 2× más rápido en esta implementación.
 
-##Trabajo futuro
-###Implementación paralela con MPI.
-###Comparación con mallas más grandes.
-###Animación de la evolución térmica.
-###Optimización de memoria y vectorización en Fortran.
+## Trabajo futuro
+-Implementación paralela con MPI
+-Comparación con mallas más grandes
+-Animación de la evolución térmica
+-Optimización de memoria y vectorización en Fortran
 
-##Autor
-Gorka — UPV/EHU
+## Autor
+**Gorka — UPV/EHU**  
 Proyecto académico de simulación numérica
