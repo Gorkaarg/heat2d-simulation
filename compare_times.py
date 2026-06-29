@@ -22,3 +22,4 @@ for i, t in enumerate(tiempos):
 
 plt.show()
 
+plt.savefig("compare_times.png")
